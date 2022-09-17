@@ -124,7 +124,7 @@ class MonthlyBudget():
         self.node_y.append(0.99)
 
         # Calculuate discretionary income
-        dis_inc = self.data["analytics"]["income"] - self.data["analytics"]["expenses"] - self.data["analytics"]["retirement"]
+        dis_inc = self.data["analytics"]["income"] - self.data["analytics"]["taxes"] - self.data["analytics"]["expenses"] - self.data["analytics"]["retirement"]
         if dis_inc > 0:
             self.data["analytics"]["discretionary_income"] = dis_inc
         else:
