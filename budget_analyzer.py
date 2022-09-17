@@ -123,6 +123,12 @@ class MonthlyBudget():
         self.node_x.append(3*self.node_step_x)
         self.node_y.append(0.99)
 
+        # Calculuate discretionary income
+        dis_inc = self.data["analytics"]["income"] - self.data["analytics"]["expenses"] - self.data["analytics"]["retirement"]
+        if dis_inc > 0:
+            self.data["analytics"]["discretionary_income"] = dis_inc
+        else:
+            self.data["analytics"]["discretionary_income"] = 0
         # Calculuate potential annual metrics
         self.data["analytics"]["annual_income"] = self.data["analytics"]["income"] * 12
         self.data["analytics"]["annual_expenses"] = self.data["analytics"]["expenses"] * 12

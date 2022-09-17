@@ -12,6 +12,7 @@
 | Total Taxes | ${'${:,.2f}'.format(taxes)} |
 | <span style="color:red">Total Expenses</span> | <span style="color:red">${'${:,.2f}'.format(expenses)}</span> |
 | Retirement Savings | ${'${:,.2f}'.format(retirement)} |
+| Discretionary Income | ${'${:,.2f}'.format(discretionary_income)} |
 | Regular Savings | ${'${:,.2f}'.format(savings)} |
 % if str(net_income)[0] == "-":
 | <span style="color:red">**NET INCOME**</span> | <span style="color:red">**${'${:,.2f}'.format(net_income)}**</span> |
