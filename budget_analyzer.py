@@ -9,8 +9,17 @@ from mako.template import Template
 
 class MonthlyBudget():
     """Analyzing and visualizing montly budgets"""
-    def __init__(self, name, yml_name, data):
+    def __init__(self, name, yml_name, output, data):
         self.name = name
+        if output:
+            self.dir = os.path.join(os.path.dirname(output), self.name.replace(" ", "_").lower() + "_budget")
+        else:
+            self.dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), self.name.replace(" ", "_").lower() + "_budget")
+        try:
+            os.mkdir(self.dir)
+        except FileExistsError:
+            print("WARNING: Directory Exists.")
+            pass
         self.data = self.prettyfy(data)['Montly Budget']
         self.data['analytics'] = {}
         self.data['analytics']['name'] = self.name
@@ -84,7 +93,7 @@ class MonthlyBudget():
         self.link_value.append(value)
         self.link_color.append(color)
 
-    def build_viz(self):
+    def build_viz(self, output):
         """Generate the Sankey diagram"""
         node = dict(
               pad = 10,
@@ -110,8 +119,12 @@ class MonthlyBudget():
                           hovermode='x', plot_bgcolor='black',
                           paper_bgcolor='black')
         fig.show()
-        fig.write_image(format='pdf', file=self.name.replace(" ", "_").lower() + '_budget_viz.pdf', width=1450, height=850)
-        fig.write_html(self.name.replace(" ", "_").lower() + '_budget_viz.html')
+        file_base_name = self.name.replace(" ", "_").lower()
+        print(self.dir)
+        viz_file_name = self.dir + "/" + file_base_name
+        print(viz_file_name)
+        fig.write_image(format="pdf", file=viz_file_name + "_budget_viz.pdf", width=1450, height=850)
+        fig.write_html(viz_file_name + "_budget_viz.html")
 
     def analyze_budget(self):
         """Calculate budget-level metrics"""
@@ -354,16 +367,14 @@ class MonthlyBudget():
         top_expenses = dict(sorted(flattened_expenses.items(), key=lambda item: item[1], reverse=True)[:5])
         self.data["analytics"]["top_expenses"] = top_expenses
 
-    def create_report(self, output=False):
+    def create_report(self, output):
         report = Template(filename='templates/budget_analysis.md')
         kwargs = self.data["analytics"]
         report_md = report.render(**kwargs)
-        if output:
-            report_file = output
-        else:
-            report_file = self.name.replace(" ", "_").lower() + "_budget_report.md"
+        file_base_name = self.name.replace(" ", "_").lower()
+        report_file = self.dir + "/" + file_base_name + "_budget_report.md"
         with open(report_file, "w+") as file:
-            file.write(report_md)
+            file.write(os.path.join(self.dir, report_md))
 
 #        html = markdown.markdown(report_md, extensions=['markdown.extensions.tables'])
 #        pdfkit.from_string(html, 'report.pdf')
@@ -379,12 +390,12 @@ if __name__ == "__main__":
                         help="Input YAML file containing monthly budget data.")
     parser.add_argument('-o', '--output', nargs='?', const=1, type=str, default="",
                         help="Output location for budget report markdown file.")
-    parser.add_argument('-n', '--name', nargs='?', const=1, type=str, default="Budget",
+    parser.add_argument('-n', '--name', nargs='?', const=1, type=str, default="Untitled Budget",
                         help="Name of the budget.")
     args = parser.parse_args()
 
     yml = open(args.input, 'r')
     data = yaml.full_load(yml)
-    budget = MonthlyBudget(args.name, args.input, data)
-    budget.build_viz()
+    budget = MonthlyBudget(args.name, args.input, args.output, data)
+    budget.build_viz(args.output)
     budget.create_report(args.output)
