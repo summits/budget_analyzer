@@ -12,7 +12,8 @@ class MonthlyBudget():
     def __init__(self, name, yml_name, output, data):
         self.name = name
         if output:
-            self.dir = os.path.join(os.path.dirname(output), self.name.replace(" ", "_").lower() + "_budget")
+            self.output = output if output[-1] == "/" else output + "/"
+            self.dir = os.path.join(os.path.dirname(self.output), self.name.replace(" ", "_").lower() + "_budget")
         else:
             self.dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), self.name.replace(" ", "_").lower() + "_budget")
         try:
