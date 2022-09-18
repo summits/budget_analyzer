@@ -16,9 +16,9 @@ class MonthlyBudget():
         else:
             self.dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), self.name.replace(" ", "_").lower() + "_budget")
         try:
-            os.mkdir(self.dir)
+            os.makedirs(self.dir)
         except FileExistsError:
-            print("WARNING: Directory Exists.")
+            print("INFO: Directory Exists.")
             pass
         self.data = self.prettyfy(data)['Montly Budget']
         self.data['analytics'] = {}
@@ -120,9 +120,7 @@ class MonthlyBudget():
                           paper_bgcolor='black')
         fig.show()
         file_base_name = self.name.replace(" ", "_").lower()
-        print(self.dir)
         viz_file_name = self.dir + "/" + file_base_name
-        print(viz_file_name)
         fig.write_image(format="pdf", file=viz_file_name + "_budget_viz.pdf", width=1450, height=850)
         fig.write_html(viz_file_name + "_budget_viz.html")
 
