@@ -231,7 +231,7 @@ class MonthlyBudget():
         self.data["analytics"]["fed_income_taxes"] = round(self.fed_income_taxes, 2)
         self.add_link_data("Taxes", "Federal Income", self.data["analytics"]["fed_income_taxes"], "rgba(255,0,0,0.3)")
 
-        # Compute Colorado state income taxe
+        # Compute Colorado state income tax, 4.55% in 2022
         self.data["analytics"]["state_income_taxes"] = round(0.0455 * self.data["analytics"]["income"], 2)
         self.add_link_data("Taxes", "State Income", self.data["analytics"]["state_income_taxes"], "rgba(255,0,0,0.3)")
         
