@@ -36,7 +36,7 @@ _[Interactive Sankey Diagram](${name.replace(" ", "_").lower()}_budget_viz.html)
 | Debt-to-Income Ratio | ${'{:,.2f}%'.format(debt_income_ratio)} |
 | Mortgage-to-Income Ratio | ${'{:,.2f}%'.format(mortgage_income_ratio)} |
 | Financial Independence Number | ${'${:,.0f}'.format(fi_number)} |
-| Highest marginal federal income tax rate | ${"{:.0%}".format(high_tax_rate)} |
+| Highest Marginal Federal Income Tax Rate | ${"{:.0%}".format(high_tax_rate)} |
 | Suggested Emergency Fund |  ${'${:,.2f}'.format(emergency_fund)} |
 
 </center>
