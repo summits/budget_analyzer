@@ -114,7 +114,7 @@ class MonthlyBudget():
                          arrangement = 'freeform',
                          valueformat = '$,')
         fig = go.Figure(data)
-        fig_title = self.name + " Monthly Budget"
+        fig_title = self.name.capitalize() + " Monthly Budget"
         fig.update_layout(title_text=fig_title,
                           font=dict(size=10, color='white'),
                           hovermode='x', plot_bgcolor='black',

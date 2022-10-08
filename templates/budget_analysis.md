@@ -1,4 +1,4 @@
-<h1 style="text-align:center"> ${name} Monthly Budget Report </h1>
+<h1 style="text-align:center"> ${name.capitalize()} Monthly Budget Report </h1>
 <%! from time import strftime as time %>
 <p style="text-align:center;font-style:italic">Prepared on ${"%m/%d/%Y at %H:%M:%S" | time} based on input data from "${yml_name}"</p>
 
