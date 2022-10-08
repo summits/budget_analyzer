@@ -156,9 +156,9 @@ class MonthlyBudget():
         self.data["analytics"]["annual_net_income_prct"] = self.data["analytics"]["annual_net_income"]/self.data["analytics"]["annual_income"]
 
         # Calculate mortgage-to-income ratio
-        self.data["analytics"]["total_mortgage"] = self.data["Expenses"]["Home Expenses"]["First Mortgage"] +\
-                                               self.data["Expenses"]["Home Expenses"]["Real Estate Tax First"] +\
-                                               self.data["Expenses"]["Home Expenses"]["Homeowners Insurance First"]
+        self.data["analytics"]["total_mortgage"] = self.data["Expenses"]["Home Expenses"]["Mortgage"] +\
+                                               self.data["Expenses"]["Home Expenses"]["Real Estate Tax"] +\
+                                               self.data["Expenses"]["Home Expenses"]["Homeowners Insurance"]
         self.data["analytics"]["mortgage_income_ratio"] = (self.data["analytics"]["total_mortgage"] /\
                                                           self.data["analytics"]["income"]) * 100
 
