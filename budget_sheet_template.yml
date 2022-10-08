@@ -1,16 +1,16 @@
 montly_budget:
-  income:
-    earned_income:
+  income: #Name must not change
+    earned_income: #Name must not change
       name1_salary:
       name1_bonus:
       name2_salary:
       name2_bonus:
-    passive_income:
+    passive_income: #Name must not change
       bank_interest:
       credit_card_rewards:
       dividends:
-  expenses:
-    personal_expenses:
+  expenses: #Name must not change
+    personal_expenses: #Name must not change
       business_expenses:
       cell_phone:
       charitable_donations:
@@ -36,16 +36,11 @@ montly_budget:
       hobbies:
       recreation:
       vacation_travel:
-    home_expenses:
-      first_mortgage:
-      real_estate_tax_first:
-      homeowners_insurance_first:
-      maintenance_first:
-      rental_mortgage:
-      real_estate_tax_rental:
-      homeowners_insurance_rental:
-      maintenance_rental:
-      rental_management_fee:
+    home_expenses: #Name must not change
+      mortgage: #Name must not change 
+      real_estate_tax: #Name must not change
+      homeowners_insurance: #Name must not change
+      home_maintenance:
       hoa_dues:
       electricity:
       natural_gas:
@@ -56,18 +51,18 @@ montly_budget:
       furniture:
       lawn_care:
       maid_service:
-    vehicle_expenses:
-      car_loan:
+    vehicle_expenses: #Name must not change
+      car_loan: #Name must not change
       auto_insurance:
       personal_property_tax:
       fuel:
       repairs_maintenance:
-    insurance_premiums:
+    insurance_premiums: #Name must not change
       medical_premium:
       dental_premium:
       vision_premium:
       supplemental_life_insurance:
-    subscriptions:
+    subscriptions: #Name must not change
       netflix:
       amazon_prime:
       spotify:
@@ -76,10 +71,10 @@ montly_budget:
       icloud:
       costco:
       nest:
-  retirement:
+  retirement: #Name must not change
     name1_401k:
     name2_401k:
-  savings:
+  savings: #Name must not change
     emergency_fund:
     college_fund:
     supplemental_retirement:
