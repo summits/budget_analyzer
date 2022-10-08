@@ -378,11 +378,6 @@ class MonthlyBudget():
 #        html = markdown.markdown(report_md, extensions=['markdown.extensions.tables'])
 #        pdfkit.from_string(html, 'report.pdf')
 
-# Taxes to add: Property tax for new home, any personal property tax
-# Make another figure that visualizes net worth
-# Add input parsers for mint inputs
-# Add debt to income ratio calculation
-
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument('-i', '--input', type=str, required=True,
