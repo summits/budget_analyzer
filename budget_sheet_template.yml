@@ -1,10 +1,10 @@
 montly_budget:
   income:
     earned_income:
-      jordan_salary:
-      jordan_bonus:
-      taylor_salary:
-      wysocke_design:
+      name1_salary:
+      name1_bonus:
+      name2_salary:
+      name2_bonus:
     passive_income:
       bank_interest:
       credit_card_rewards:
@@ -38,13 +38,9 @@ montly_budget:
       vacation_travel:
     home_expenses:
       first_mortgage:
-      first_mortgage:
       real_estate_tax_first:
-      real_estate_tax_first:
-      homeowners_insurance_first:
       homeowners_insurance_first:
       maintenance_first:
-      rental_mortgage:
       rental_mortgage:
       real_estate_tax_rental:
       homeowners_insurance_rental:
@@ -81,12 +77,10 @@ montly_budget:
       costco:
       nest:
   retirement:
-    jordan_401k:
-    taylor_401k:
+    name1_401k:
+    name2_401k:
   savings:
     emergency_fund:
     college_fund:
     supplemental_retirement:
-    land:
-    robinhood:
-    adoption:
+    other_savings:
