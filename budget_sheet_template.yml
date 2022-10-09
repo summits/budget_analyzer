@@ -1,81 +1,85 @@
-montly_budget:
-  income: #Name must not change
-    earned_income: #Name must not change
-      name1_salary:
-      name1_bonus:
-      name2_salary:
-      name2_bonus:
-    passive_income: #Name must not change
-      bank_interest:
-      credit_card_rewards:
-      dividends:
-  expenses: #Name must not change
-    personal_expenses: #Name must not change
-      business_expenses:
-      cell_phone:
-      charitable_donations:
-      child_activities:
-      child_allowance_expense:
-      child_care:
-      clothing_name1:
-      clothing_name2:
-      clothing_children:
-      dining:
-      groceries:
-      supplements:
-      healthcare_medical:
-      healthcare_dental:
-      healthcare_vision:
-      healthcare_prescription:
-      household_items:
-      personal_care:
-      pet_care:
-      gifts:
-      self_improvement:
-      entertainment:
-      hobbies:
-      recreation:
-      vacation_travel:
-    home_expenses: #Name must not change
-      mortgage: #Name must not change 
-      real_estate_tax: #Name must not change
-      homeowners_insurance: #Name must not change
-      home_maintenance:
-      hoa_dues:
-      electricity:
-      natural_gas:
-      water_sewer_trash:
-      internet:
-      cable_satellite:
-      home_improvement:
-      furniture:
-      lawn_care:
-      maid_service:
-    vehicle_expenses: #Name must not change
-      car_loan: #Name must not change
-      auto_insurance:
-      personal_property_tax:
-      fuel:
-      repairs_maintenance:
-    insurance_premiums: #Name must not change
-      medical_premium:
-      dental_premium:
-      vision_premium:
-      supplemental_life_insurance:
-    subscriptions: #Name must not change
-      netflix:
-      amazon_prime:
-      spotify:
-      apple_tv+:
-      youTube_premium:
-      icloud:
-      costco:
-      nest:
-  retirement: #Name must not change
-    name1_401k:
-    name2_401k:
-  savings: #Name must not change
-    emergency_fund:
-    college_fund:
-    supplemental_retirement:
-    other_savings:
+# Costs for each field can be specified as "0.00", "0.0", "0". Costs or items that don't apply can be left blank, deleted, or filled in with zeros
+# Some names of fields like "monthly_budget" must not change for analytics purposes
+# You may add, modify, or remove any budget items not listed as "Must not change"
+# Any fields with no costs defined should be left blank as they are calculated as part of the budget analysis
+
+monthly_budget: #Must not change
+  income: #Must not change 
+    earned_income: #Must not change
+      name1_salary: 6250.00 #$75,000/yr annual salary
+      name1_bonus: 300.00 #$3,600 annual bonus averaged over a year
+      name2_salary: 50000.00 #$50,000/yr annual salary
+      name2_bonus: 200.00 #$2,400 annual bonus averaged over a year
+    passive_income: #Must not change
+      bank_interest: 4.50
+      credit_card_rewards: 1.25
+      dividends: 3.50
+  expenses: #Must not change
+    personal_expenses: #Must not change
+      business_expenses: 10.00
+      cell_phone: 50.00
+      charitable_donations: 15.00
+      child_activities: 125.00
+      child_allowance_expense: 150.00
+      child_care: 750.00
+      clothing_name1: 50.00
+      clothing_name2: 50
+      clothing_children: 20.00
+      dining: 300.00
+      groceries: 1000.00
+      supplements: 25.00
+      healthcare_medical: 100.00
+      healthcare_dental: 20.00
+      healthcare_vision: 20.00
+      healthcare_prescription: 50.00
+      household_items: 100.00
+      personal_care: 100.00
+      pet_care: 50.00
+      gifts: 200.00
+      self_improvement: 50.00
+      entertainment: 200.00
+      hobbies: 200.00
+      recreation: 150.00
+      vacation_travel: 500.00
+    home_expenses: #Must not change
+      mortgage: 3000.00 #Must not change
+      real_estate_tax: 300.00 #Must not change
+      homeowners_insurance: 250.00 #Must not change
+      home_maintenance: 75.00
+      hoa_dues: 50.00
+      electricity: 100.00
+      natural_gas: 50.00
+      water_sewer_trash: 30.00
+      internet: 75.00
+      cable_satellite: 0.00
+      home_improvement: 50.00
+      furniture: 20.00
+      lawn_care: 0.00
+      maid_service: 0.00
+    vehicle_expenses: #Must not change
+      car_loan: 0.00 #Must not change
+      auto_insurance: 65.00
+      personal_property_tax: 30.00
+      fuel: 100.00
+      repairs_maintenance: 25.00
+    insurance_premiums: #Must not change
+      medical_premium: 150.00
+      dental_premium: 20.00
+      vision_premium: 15.00
+      supplemental_life_insurance: 20.00
+    subscriptions: #Must not change
+      netflix: 20.00
+      amazon_prime: 20.00                 
+      spotify: 15.00
+      apple_tv+: 6.00
+      youTube_premium: 5.00
+      icloud: 10.00
+      costco: 8.00
+  retirement: #Must not change
+    name1_401k: 1708.00
+    name2_401k: 1708.00
+  savings: #Must not change
+    emergency_fund: 50.00
+    college_fund: 200.00
+    supplemental_retirement: 250.00
+    other_savings: 200.00
