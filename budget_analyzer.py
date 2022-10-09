@@ -381,11 +381,11 @@ class MonthlyBudget():
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument('-i', '--input', type=str, required=True,
-                        help="Input YAML file containing monthly budget data.")
+                        help="Input YAML file containing monthly budget data")
     parser.add_argument('-o', '--output', nargs='?', const=1, type=str, default="",
-                        help="Output location for budget report markdown file.")
+                        help="Output location for budget report markdown file")
     parser.add_argument('-n', '--name', nargs='?', const=1, type=str, default="Untitled Budget",
-                        help="Name of the budget.")
+                        help="Name of the budget")
     args = parser.parse_args()
 
     yml = open(args.input, 'r')
