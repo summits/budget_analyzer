@@ -1,4 +1,6 @@
 import os
+import platform
+import subprocess
 import sys 
 import yaml
 import argparse
@@ -374,6 +376,12 @@ class MonthlyBudget():
         report_file = self.dir + "/" + file_base_name + "_budget_report.md"
         with open(report_file, "w+") as file:
             file.write(os.path.join(self.dir, report_md))
+        if platform.system() == 'Darwin':
+            subprocess.call(('open', report_file))
+        elif platform.system() == 'Windows':
+            os.startfile(report_file)
+        else:
+            subprocess.call(('xdg-open', report_file))
 
 #        html = markdown.markdown(report_md, extensions=['markdown.extensions.tables'])
 #        pdfkit.from_string(html, 'report.pdf')
