@@ -8,7 +8,7 @@ monthly_budget: #Must not change
     earned_income: #Must not change
       name1_salary: 6250.00 #$75,000/yr annual salary
       name1_bonus: 300.00 #$3,600 annual bonus averaged over a year
-      name2_salary: 50000.00 #$50,000/yr annual salary
+      name2_salary: 4166.66 #$50,000/yr annual salary
       name2_bonus: 200.00 #$2,400 annual bonus averaged over a year
     passive_income: #Must not change
       bank_interest: 4.50
@@ -19,32 +19,32 @@ monthly_budget: #Must not change
       business_expenses: 10.00
       cell_phone: 50.00
       charitable_donations: 15.00
-      child_activities: 125.00
-      child_allowance_expense: 150.00
+      child_activities: 75.00
+      child_allowance_expense: 50.00
       child_care: 750.00
       clothing_name1: 50.00
       clothing_name2: 50
       clothing_children: 20.00
-      dining: 300.00
+      dining: 200.00
       groceries: 1000.00
       supplements: 25.00
       healthcare_medical: 100.00
       healthcare_dental: 20.00
       healthcare_vision: 20.00
       healthcare_prescription: 50.00
-      household_items: 100.00
-      personal_care: 100.00
+      household_items: 65.00
+      personal_care: 75.00
       pet_care: 50.00
-      gifts: 200.00
+      gifts: 170.00
       self_improvement: 50.00
       entertainment: 200.00
-      hobbies: 200.00
+      hobbies: 150.00
       recreation: 150.00
-      vacation_travel: 500.00
+      vacation_travel: 300.00
     home_expenses: #Must not change
-      mortgage: 3000.00 #Must not change
-      real_estate_tax: 300.00 #Must not change
-      homeowners_insurance: 250.00 #Must not change
+      mortgage: 2100.00 #Must not change
+      real_estate_tax: 200.00 #Must not change
+      homeowners_insurance: 175.00 #Must not change
       home_maintenance: 75.00
       hoa_dues: 50.00
       electricity: 100.00
@@ -76,10 +76,10 @@ monthly_budget: #Must not change
       icloud: 10.00
       costco: 8.00
   retirement: #Must not change
-    name1_401k: 1708.00
-    name2_401k: 1708.00
+    name1_401k: 700.00
+    name2_401k: 200.00
   savings: #Must not change
-    emergency_fund: 50.00
-    college_fund: 200.00
-    supplemental_retirement: 250.00
-    other_savings: 200.00
+    emergency_fund: 25.00
+    college_fund: 50.00
+    supplemental_retirement: 80.00
+    other_savings: 100.00
