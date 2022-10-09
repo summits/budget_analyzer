@@ -21,7 +21,7 @@ class MonthlyBudget():
         except FileExistsError:
             print("INFO: Directory Exists.")
             pass
-        self.data = self.prettyfy(data)['Montly Budget']
+        self.data = self.prettyfy(data)['Monthly Budget']
         self.data['analytics'] = {}
         self.data['analytics']['name'] = self.name
         self.data['analytics']['yml_name'] = yml_name
