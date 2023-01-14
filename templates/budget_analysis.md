@@ -11,13 +11,14 @@
 | <span style="color:green">Total Gross Income</span> | <span style="color:green">${'${:,.2f}'.format(income)}</span> | 
 | Total Taxes | ${'${:,.2f}'.format(taxes)} |
 | <span style="color:red">Total Expenses</span> | <span style="color:red">${'${:,.2f}'.format(expenses)}</span> |
+| <span style="color:green">**NET INCOME**</span> | <span style="color:green">**${'${:,.2f}'.format(net_income)}**</span> |
 | Retirement Savings | ${'${:,.2f}'.format(retirement)} |
 | Discretionary Income | ${'${:,.2f}'.format(discretionary_income)} |
 | Regular Savings | ${'${:,.2f}'.format(savings)} |
-% if str(net_income)[0] == "-":
-| <span style="color:red">**NET INCOME**</span> | <span style="color:red">**${'${:,.2f}'.format(net_income)}**</span> |
+% if str(net_gain_loss)[0] == "-":
+| <span style="color:red">**NET LOSS**</span> | <span style="color:red">**${'${:,.2f}'.format(net_gain_loss)}**</span> |
 % else:
-| <span style="color:green">**NET INCOME**</span> | <span style="color:green">**${'${:,.2f}'.format(net_income)}**</span> |
+| <span style="color:green">**NET GAIN**</span> | <span style="color:green">**${'${:,.2f}'.format(net_gain_loss)}**</span> |
 % endif
 
 ![Budget Sankey Diagram](${name.replace(" ", "_").lower()}_budget_viz.pdf)

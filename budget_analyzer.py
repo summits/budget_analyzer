@@ -131,9 +131,15 @@ class MonthlyBudget():
         """Calculate budget-level metrics"""
 
         # Calculuate monthly net income
-        self.data["analytics"]["net_income"] = round(self.data["analytics"]["income"] - self.data["analytics"]["expenses"] - self.data["analytics"]["taxes"] - \
+        self.data["analytics"]["net_income"] = round(self.data["analytics"]["income"] - self.data["analytics"]["expenses"], 2)
+
+        # Calculuate monthly net loss/gain
+        self.data["analytics"]["net_gain_loss"] = round(self.data["analytics"]["income"] - self.data["analytics"]["expenses"] - self.data["analytics"]["taxes"] - \
                           self.data["analytics"]["retirement"] - self.data["analytics"]["savings"], 2)
-        self.add_link_data("Income", "Net Income", self.data["analytics"]["net_income"], "rgba(0,255,0,0.3)")
+        if self.data["analytics"]["net_gain_loss"] >= 0:
+            self.add_link_data("Income", "Net Gain", self.data["analytics"]["net_gain_loss"], "rgba(0,255,0,0.3)")
+        else:
+            self.add_link_data("Income", "Net Loss", self.data["analytics"]["net_gain_loss"], "rgba(255,0,0,0.3)")
         self.node_x.append(3*self.node_step_x)
         self.node_y.append(0.99)
 
