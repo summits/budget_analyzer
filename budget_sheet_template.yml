@@ -78,8 +78,8 @@ monthly_budget: #Must not change
   retirement: #Must not change
     name1_401k: 700.00
     name2_401k: 200.00
+    supplemental_retirement: 80.00
   savings: #Must not change
     emergency_fund: 25.00
     college_fund: 50.00
-    supplemental_retirement: 80.00
     other_savings: 100.00

@@ -300,7 +300,7 @@ class MonthlyBudget():
         self.data["analytics"]["retirement"] = round(self.data["analytics"]["retirement"], 2)
         self.add_link_data("Income", "Retirement", self.data["analytics"]["retirement"], "rgba(28,67,68,0.3)")
         # Retirement savings rate
-        self.data["analytics"]["retire_savings_rate"] = (self.data["analytics"]["retirement"] + self.data["Savings"]["Supplemental Retirement"]) / self.data["analytics"]["income"]
+        self.data["analytics"]["retire_savings_rate"] = self.data["analytics"]["retirement"] / self.data["analytics"]["income"]
 
     def analyze_savings(self):
         """Add savings source, target, and value arrays"""
