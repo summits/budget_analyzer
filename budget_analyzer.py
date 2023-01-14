@@ -131,7 +131,7 @@ class MonthlyBudget():
         """Calculate budget-level metrics"""
 
         # Calculuate monthly net income
-        self.data["analytics"]["net_income"] = round(self.data["analytics"]["income"] - self.data["analytics"]["expenses"], 2)
+        self.data["analytics"]["net_income"] = round(self.data["analytics"]["income"] - self.data["analytics"]["taxes"], 2)
 
         # Calculuate monthly net loss/gain
         self.data["analytics"]["net_gain_loss"] = round(self.data["analytics"]["income"] - self.data["analytics"]["expenses"] - self.data["analytics"]["taxes"] - \

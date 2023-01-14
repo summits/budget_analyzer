@@ -10,8 +10,8 @@
 | ---- | -----: |
 | <span style="color:green">Total Gross Income</span> | <span style="color:green">${'${:,.2f}'.format(income)}</span> | 
 | Total Taxes | ${'${:,.2f}'.format(taxes)} |
+| Net Income | ${'${:,.2f}'.format(net_income)} |
 | <span style="color:red">Total Expenses</span> | <span style="color:red">${'${:,.2f}'.format(expenses)}</span> |
-| <span style="color:green">**NET INCOME**</span> | <span style="color:green">**${'${:,.2f}'.format(net_income)}**</span> |
 | Retirement Savings | ${'${:,.2f}'.format(retirement)} |
 | Discretionary Income | ${'${:,.2f}'.format(discretionary_income)} |
 | Regular Savings | ${'${:,.2f}'.format(savings)} |
