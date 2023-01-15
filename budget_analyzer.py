@@ -139,7 +139,7 @@ class MonthlyBudget():
         if self.data["analytics"]["net_gain_loss"] >= 0:
             self.add_link_data("Income", "Net Gain", self.data["analytics"]["net_gain_loss"], "rgba(0,255,0,0.3)")
         else:
-            self.add_link_data("Income", "Net Loss", self.data["analytics"]["net_gain_loss"], "rgba(255,0,0,0.3)")
+            self.add_link_data("Net Loss", "Income", abs(self.data["analytics"]["net_gain_loss"]), "rgba(255,0,0,0.3)")
         self.node_x.append(3*self.node_step_x)
         self.node_y.append(0.99)
 
