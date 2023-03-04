@@ -222,7 +222,6 @@ class MonthlyBudget():
         l5 = ((joint_tax_lvls[4] - joint_tax_lvls[3]) * joint_tax_rates[4]) + l4
         l6 = ((joint_tax_lvls[5] - joint_tax_lvls[4]) * joint_tax_rates[5]) + l5
         joint_tax_amts = [l1,l2,l3,l4,l5,l6]
-        print(joint_tax_amts)
 
        # Compute federal income taxes based on  MFJ
         if self.data["analytics"]["taxable_income"] <= joint_tax_lvls[0]/12:
@@ -252,8 +251,19 @@ class MonthlyBudget():
         self.data["analytics"]["fed_income_taxes"] = round(self.fed_income_taxes, 2)
         self.add_link_data("Taxes", "Federal Income", self.data["analytics"]["fed_income_taxes"], "rgba(255,0,0,0.3)")
 
-        # Compute Colorado state income tax, 4.55% in 2022
-        self.data["analytics"]["state_income_taxes"] = round(0.0455 * self.data["analytics"]["income"], 2)
+        # Compute Colorado state income tax, 4.40% for income, 0.45% for FAMLI in 2023
+        state_inc_tax_rate = 0.0440
+        famli_rate = 0.0045
+        max_oasdi_amt = 160200
+        
+        state_inc_tax = self.data["analytics"]["income"] * state_inc_tax_rate 
+
+        if self.data["analytics"]["income"]/12 < max_oasdi_amt/12:
+            famli_tax = (self.data["analytics"]["income"]/12) * famli_rate
+        else:
+            famli_tax = (max_oasdi_amt/12) * famli_rate
+
+        self.data["analytics"]["state_income_taxes"] = round(state_inc_tax + famli_tax, 2)
         self.add_link_data("Taxes", "State Income", self.data["analytics"]["state_income_taxes"], "rgba(255,0,0,0.3)")
         
         # Compute FICA taxes
@@ -262,19 +272,21 @@ class MonthlyBudget():
         for income,value in self.data["Income"]["Earned Income"].items():
             income_name = income.replace(" ","_").lower() 
             oasdi_name = income_name + "_oasdi_tax"
+            oasdi_rate = 0.062
             med_name = income_name + "_med_tax"
+            med_rate = 0.0145
             # Compute OASDI taxes (use gross income, not taxable income)
-            if value < 147000/12:
-                oasdi_tax = round(value * 0.062, 2)
+            if value < max_oasdi_amt/12:
+                oasdi_tax = round(value * oasdi_rate, 2)
             else:
-                oasdi_tax = round((147000/12) * 0.062, 2)
+                oasdi_tax = round((max_oasdi_amt/12) * oasdi_rate, 2)
                
             # Compute Medicare taxes (use gross income, not taxable income)
             if self.data["analytics"]["income"] <= 250000/12: 
-                med_tax = round(value * 0.0145, 2)
+                med_tax = round(value * med_rate, 2)
             else: #additional medicare tax of 0.9%
                 extra_ratio = (self.data["analytics"]["income"] - (250000/12)) / self.data["analytics"]["income"]
-                med_tax = round(value * 0.0145 + (value * extra_ratio) * 0.009, 2)
+                med_tax = round(value * med_rate + (value * extra_ratio) * 0.009, 2)
 
             if "Salary" not in income and "Bonus" not in income: #assume tax is for business income, so you pay double
                 oasdi_tax = oasdi_tax * 2
