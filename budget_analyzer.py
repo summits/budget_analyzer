@@ -209,30 +209,43 @@ class MonthlyBudget():
     def analyze_taxes(self):
         """Add tax source, target, and value arrays"""
         # Calculate taxable income
-        standard_deduction = 12550/12
-        self.data["analytics"]["taxable_income"] = round(self.data["analytics"]["income"] - (standard_deduction * 2), 2)
-        # Compute federal income taxes based on  MFJ
-        if self.data["analytics"]["taxable_income"] <= 20550/12:
-            self.data["analytics"]["high_tax_rate"] = 0.1
-            self.fed_income_taxes = self.data["analytics"]["taxable_income"] * 0.1
-        elif self.data["analytics"]["taxable_income"] <= 83550/12: 
-            self.data["analytics"]["high_tax_rate"] = 0.12
-            self.fed_income_taxes = (self.data["analytics"]["taxable_income"] - 20550/12) * 0.12 + 2055/12
-        elif self.data["analytics"]["taxable_income"] <= 178150/12:
-            self.data["analytics"]["high_tax_rate"] = 0.22
-            self.fed_income_taxes = (self.data["analytics"]["taxable_income"] - 83550/12) * 0.22 + 9615/12
-        elif self.data["analytics"]["taxable_income"] <= 340100/12:
-            self.data["analytics"]["high_tax_rate"] = 0.24
-            self.fed_income_taxes = (self.data["analytics"]["taxable_income"] - 178150/12) * 0.24 + 30427/12
-        elif self.data["analytics"]["taxable_income"] <= 431900/12:
-            self.data["analytics"]["high_tax_rate"] = 0.32
-            self.fed_income_taxes = (self.data["analytics"]["taxable_income"] - 340100/12) * 0.32 + 69295/12
-        elif self.data["analytics"]["taxable_income"] <= 647850/12:
-            self.data["analytics"]["high_tax_rate"] = 0.35
-            self.fed_income_taxes = (self.data["analytics"]["taxable_income"] - 431900/12) * 0.35 + 98671/12
+        joint_standard_deduction = 27700/12
+        joint_tax_lvls = [22000,89450,190750,364200,462500,693750] 
+        joint_tax_rates = [.1,.12,.22,.24,.32,.35,.37] 
+        self.data["analytics"]["taxable_income"] = round(self.data["analytics"]["income"] - (joint_standard_deduction), 2)
+
+        # Calculate marginal tax bracket amounts
+        l1 = joint_tax_lvls[0] * joint_tax_rates[0]
+        l2 = ((joint_tax_lvls[1] - joint_tax_lvls[0]) * joint_tax_rates[1]) + l1
+        l3 = ((joint_tax_lvls[2] - joint_tax_lvls[1]) * joint_tax_rates[2]) + l2
+        l4 = ((joint_tax_lvls[3] - joint_tax_lvls[2]) * joint_tax_rates[3]) + l3
+        l5 = ((joint_tax_lvls[4] - joint_tax_lvls[3]) * joint_tax_rates[4]) + l4
+        l6 = ((joint_tax_lvls[5] - joint_tax_lvls[4]) * joint_tax_rates[5]) + l5
+        joint_tax_amts = [l1,l2,l3,l4,l5,l6]
+        print(joint_tax_amts)
+
+       # Compute federal income taxes based on  MFJ
+        if self.data["analytics"]["taxable_income"] <= joint_tax_lvls[0]/12:
+            self.data["analytics"]["high_tax_rate"] = joint_tax_rates[0]
+            self.fed_income_taxes = self.data["analytics"]["taxable_income"] * joint_tax_rates[0]
+        elif self.data["analytics"]["taxable_income"] <= joint_tax_lvls[1]/12: 
+            self.data["analytics"]["high_tax_rate"] = joint_tax_rates[1]
+            self.fed_income_taxes = (self.data["analytics"]["taxable_income"] - joint_tax_lvls[0]/12) * joint_tax_rates[1] + joint_tax_amts[0]/12
+        elif self.data["analytics"]["taxable_income"] <= joint_tax_lvls[2]/12: 
+            self.data["analytics"]["high_tax_rate"] = joint_tax_rates[2]
+            self.fed_income_taxes = (self.data["analytics"]["taxable_income"] - joint_tax_lvls[1]/12) * joint_tax_rates[2] + joint_tax_amts[1]/12
+        elif self.data["analytics"]["taxable_income"] <= joint_tax_lvls[3]/12: 
+            self.data["analytics"]["high_tax_rate"] = joint_tax_rates[3]
+            self.fed_income_taxes = (self.data["analytics"]["taxable_income"] - joint_tax_lvls[2]/12) * joint_tax_rates[3] + joint_tax_amts[2]/12
+        elif self.data["analytics"]["taxable_income"] <= joint_tax_lvls[4]/12: 
+            self.data["analytics"]["high_tax_rate"] = joint_tax_rates[4]
+            self.fed_income_taxes = (self.data["analytics"]["taxable_income"] - joint_tax_lvls[3]/12) * joint_tax_rates[4] + joint_tax_amts[3]/12
+        elif self.data["analytics"]["taxable_income"] <= joint_tax_lvls[5]/12: 
+            self.data["analytics"]["high_tax_rate"] = joint_tax_rates[5]
+            self.fed_income_taxes = (self.data["analytics"]["taxable_income"] - joint_tax_lvls[4]/12) * joint_tax_rates[5] + joint_tax_amts[4]/12
         else:
-            self.data["analytics"]["high_tax_rate"] = 0.37
-            self.fed_income_taxes = (self.data["analytics"]["taxable_income"] - 647850/12) * 0.37 + 174253.5/12
+            self.data["analytics"]["high_tax_rate"] = joint_tax_rates[6]
+            self.fed_income_taxes = (self.data["analytics"]["taxable_income"] - joint_tax_lvls[5]/12) * joint_tax_rates[6] + joint_tax_amts[5]/12
         # Dedeuct montly child tax credit
         child_tax_credit = 2000/12
         self.fed_income_taxes = self.fed_income_taxes - child_tax_credit
