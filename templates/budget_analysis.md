@@ -105,6 +105,19 @@ Federal tax amounts are based on a total household monthly taxable income of **$
 
 <h2> Monthly Savings </h2>
 
+<h3> Retirement </h3>
+
+<center>
+
+| ACCOUNT | AMOUNT |
+| ------- | -----: |
+% for key,value in top_retirement.items():
+| ${key} | ${'${:,.2f}'.format(value)} |
+% endfor
+| **TOTAL RETIREMENT** | **${'${:,.2f}'.format(retirement)}** |
+
+</center>
+
 <h3> Sorted Savings </h3>
 
 <center>
@@ -126,7 +139,7 @@ Federal tax amounts are based on a total household monthly taxable income of **$
 | ------ | ----: |
 | Savings Rate | ${"{:.2%}".format(savings_rate)} |
 | Retirement Savings Rate\* | ${"{:.2%}".format(retire_savings_rate)} |
-\*_Retirement savings rate includs supplemental retirement savings_
+\*_Retirement savings rate includes supplemental retirement savings_
 
 </center>
 

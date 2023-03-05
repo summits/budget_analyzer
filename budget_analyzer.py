@@ -327,6 +327,14 @@ class MonthlyBudget():
         # Retirement savings rate
         self.data["analytics"]["retire_savings_rate"] = self.data["analytics"]["retirement"] / self.data["analytics"]["income"]
 
+        # Flatten nested dictionaries, then sort highest to lowest
+        flattened_retirement = {}
+        for key,value in self.recursive_items(self.data["Retirement"]):
+            if type(value) is not dict:
+                flattened_retirement[key] = value
+        top_retirement = dict(sorted(flattened_retirement.items(), key=lambda item: item[1], reverse=True))
+        self.data["analytics"]["top_retirement"] = top_retirement
+
     def analyze_savings(self):
         """Add savings source, target, and value arrays"""
         self.data["analytics"]["savings"] = 0.00
